@@ -31,10 +31,9 @@ console.log('valid user', user);
   );
 
   return (
-    <div className="fixed w-full bg-white z-13 shadow-sm">
-      <div className=" border-b-[1px]">
+    <>
         <Container>
-          <div className="navbar ">
+          <div className="navbar  border-b-2 border-base-300 shadow-sm ">
             <div className="navbar-start">
               <div className="dropdown">
                 <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -88,8 +87,8 @@ console.log('valid user', user);
             </div>
           </div>
         </Container>
-      </div>
-    </div>
+        
+</>
   );
 };
 
