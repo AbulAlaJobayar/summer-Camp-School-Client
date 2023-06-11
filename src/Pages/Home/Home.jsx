@@ -1,10 +1,12 @@
 
+import Heading from "./Heading";
+
 
 const Home = () => {
     return (
-        <div>
-            <h1>hello home</h1>
-        </div>
+        <Heading></Heading>
+
+       
     );
 };
 

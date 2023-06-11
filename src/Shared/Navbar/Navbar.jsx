@@ -1,37 +1,34 @@
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Container from "../Container";
+import avater from "../../assets/pngwing.com.png"
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+
+
 
 const Navbar = () => {
+
+const {user}=useContext(AuthContext)
+console.log('valid user', user);
+
 
 
   const navOption = (
     <>
-      <li>
-       <Link to='/'>Home</Link>
+      <li className="text-lg font-semibold">
+        <Link to="/">Home</Link>
       </li>
-
-
-
-      <li tabIndex={0}>
-        <details>
-          <summary>Parent</summary>
-          <ul className="p-2">
-            <li>
-              <a>Submenu 1</a>
-            </li>
-            <li>
-              <a>Submenu 2</a>
-            </li>
-          </ul>
-        </details>
+      <li className="text-lg font-semibold">
+        <Link to="/">Instructors</Link>
       </li>
-      <li>
-        <a>Item 3</a>
+      <li className="text-lg font-semibold">
+        <Link to="/"> Classes</Link>
+      </li>
+      <li className="text-lg font-semibold">
+        <Link to="/">Dashboard </Link>
       </li>
     </>
   );
-
-
 
   return (
     <div className="fixed w-full bg-white z-13 shadow-sm">
@@ -64,17 +61,30 @@ const Navbar = () => {
                   {navOption}
                 </ul>
               </div>
-              <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+              <Link
+                to="/"
+                className="btn btn-ghost normal-case text-2xl font-bold text-[#2572ff]"
+              >
+                Powerlearn
+              </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
               <ul className="menu menu-horizontal px-1">{navOption}</ul>
             </div>
             <div className="navbar-end">
-
-
-              <a className="btn">Button</a>
-
-
+              {
+              user?<>
+                <img className='rounded-full'
+                      src={user && user.photoURL ? user.photoURL : avater}
+                      alt='profile'
+                      height='30'
+                      width='30'
+                      title={user && user.displayName? user.displayName : "guest"}
+                  />
+              </>:<>
+               <Link to='/login'> <button className="btn "> Login</button></Link>
+              </>
+             }
             </div>
           </div>
         </Container>
