@@ -43,8 +43,8 @@ const role = datas[0]?.role
 
 {
      role && role==='instructor' &&(<>
-       <li><Link to='/dashboard/addaclass'>Add a Class</Link></li>
-       <li><Link to='/deshboard/class'>My Classes</Link></li>
+       <li><Link to='/dashboard'>Add a Class</Link></li>
+       <li><Link to='/dashboard/instructorclass'>My Classes</Link></li>
 
      </>)
 }
