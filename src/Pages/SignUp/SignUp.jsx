@@ -4,6 +4,7 @@ import { useContext} from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { saveUser } from "../../Component/auth";
 
 const SignUp = () => {
   const { setLoading, signInWithGoogle, createUser, updateUserProfile } =
@@ -49,6 +50,7 @@ const SignUp = () => {
                   timer: 1500
                 })
                 
+                saveUser(result.user)
                 navigate(from, { replace: true });
               })
               .catch((err) => {
@@ -96,7 +98,8 @@ const SignUp = () => {
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
-        console.log(result.user);
+        console.log(result.user.email);
+        saveUser(result.user)
         navigate(from, { replace: true });
       })
       .catch((err) => {

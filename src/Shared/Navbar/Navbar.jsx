@@ -25,7 +25,7 @@ console.log('valid user', user);
         <Link to="/"> Classes</Link>
       </li>
       <li className="text-lg font-semibold">
-        <Link to="/">Dashboard </Link>
+        <Link to="/dashboard">Dashboard </Link>
       </li>
     </>
   );

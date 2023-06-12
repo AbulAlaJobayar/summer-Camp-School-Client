@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 
 import { useForm } from "react-hook-form";
+import { saveUser } from "../../Component/auth";
 
 const Login = () => {
   const {signIn, signInWithGoogle } =useContext(AuthContext);
@@ -55,6 +56,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500
         })
+        saveUser(result.user)
         navigate(from, { replace: true });
       })
       .catch((err) => {
