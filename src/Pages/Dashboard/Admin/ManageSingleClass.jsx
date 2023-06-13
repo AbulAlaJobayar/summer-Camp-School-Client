@@ -59,8 +59,6 @@ const closeModal=()=>{
 
         <td> <button disabled={status=="pending" || status=="approved"}
          onClick={()=>setIsOpen(true)} className="btn btn-primary">Feadback</button> </td>
-
-        {/* <td> <button disabled={status=="pending" || status=="approved"} onClick={()=>handleFeedback(_id)} className="btn btn-primary">Feadback</button> </td> */}
            
       </tr>
       <Feadback isOpen={isOpen} id={_id} closeModal={closeModal} setIsOpen={setIsOpen} ></Feadback>

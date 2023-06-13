@@ -54,7 +54,7 @@ const role = datas[0]?.role
 {
      role && role==='admin' &&(<>
        <li><Link to='/dashboard/manageclass'>Manage Classes</Link></li>
-       <li><Link to='/deshboard/class'>Manage Users</Link></li>
+       <li><Link to='/dashboard/manageusers'>Manage Users</Link></li>
 
      </>)
 }
