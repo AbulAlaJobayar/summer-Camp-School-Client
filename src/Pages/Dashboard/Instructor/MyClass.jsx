@@ -22,7 +22,7 @@ const MyClass = () => {
             <th>Course Name</th>
             <th>Total Enrolled</th>
             <th>Feadback</th>
-            <th>Available Seats</th>
+            <th>Seats</th>
             <th>Status</th>
           </tr>
         </thead>

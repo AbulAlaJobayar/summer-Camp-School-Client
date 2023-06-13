@@ -1,6 +1,6 @@
-const ManageSingleUser = ({item, i}) => {
+const ManageSingleUser = ({item, i,handleMakeAdmin,handleMakeInstructor}) => {
 
-  // eslint-disable-next-line no-unused-vars
+
   const {image, email,name,_id,role}=item || []
   return (
     <tr>
@@ -27,7 +27,10 @@ const ManageSingleUser = ({item, i}) => {
       {email}
       </td>
       <td>{role}</td>
-    
+      <td><button onClick={() => handleMakeAdmin(_id)} className="btn btn-primary"  disabled={role === "admin"} >Admin</button> </td>
+      <td>
+      <button onClick={() => handleMakeInstructor(_id)} className="btn btn-primary"  disabled={role === "instructor"}>Instructor</button> </td>
+      
       {/* <td>
         <h1
           className={

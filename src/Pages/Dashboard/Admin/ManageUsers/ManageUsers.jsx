@@ -1,17 +1,66 @@
 import { useEffect, useState } from "react";
 import ManageSingleUser from "./ManageSingleUser";
+import Swal from "sweetalert2";
 
 const ManageUsers = () => {
 
        const [users, setUsers]=useState([])
+       const [refetch, setRefetch] = useState(false);
+
        useEffect(()=>{
               fetch('http://localhost:5000/adminmanage')
               .then(res=>res.json())
               .then(data=>setUsers(data))
-       },[])
-       console.log(users);
+       },[refetch])
+
+const handleMakeAdmin=(id)=>{
+  const updateStatus = { role:"admin" };
+  fetch(`http://localhost:5000/updaterole/${id}`, {
+    method: "PUT",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(updateStatus),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.modifiedCount > 0) {
+        Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: "Role changed successfully !",
+        });
+     }
+     setRefetch(true);
+    });
+};
+const handleMakeInstructor=(id)=>{
+  const updateStatus = { role:"instructor" };
+  fetch(`http://localhost:5000/updaterole/${id}`, {
+    method: "PUT",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(updateStatus),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.modifiedCount > 0) {
+        Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: "Role changed successfully !",
+        });
+     }
+     setRefetch(true);
+    });
+};
+
+
+
+
        return (
-              <div className="overflow-x-auto w-full">
+              <div className="overflow-x-auto w-full h-full">
               <table className="table">
                 {/* head */}
                 <thead>
@@ -28,7 +77,7 @@ const ManageUsers = () => {
                 </thead>
                 <tbody>
                   {
-                    users.map((item,i)=><ManageSingleUser key={item._id} i={i} item={item}></ManageSingleUser>)
+                    users.map((item,i)=><ManageSingleUser key={item._id} i={i} item={item} handleMakeAdmin={handleMakeAdmin} handleMakeInstructor={handleMakeInstructor}></ManageSingleUser>)
                   }
                 </tbody>
               </table>

@@ -1,9 +1,5 @@
 const SingleClass = ({singleClass,i}) => {
-const {seat,enroll}=singleClass
-const totatseat= parseFloat(seat)
-const totalEnroll=parseFloat(enroll)
-const total=totatseat-totalEnroll;
-console.log(total);
+const {seat,status}=singleClass
 
   return (
     <>
@@ -30,15 +26,16 @@ console.log(total);
         </td>
 
         <td>
-          <h1>
+          <h1 className="text-red-500">
             {singleClass && singleClass?.status === "denied" && (
               <>{singleClass.feadback}</>
             )}
           </h1>
         </td>
-        <td>{total}</td>
-        <td><button className="capitalize text-base font-semibold border border-slate-800 rounded py-2 px-4">{singleClass.status}</button></td>
+        <td>{seat}</td>
+        <td><h1 className={status && status==="denied"?" capitalize font-bold  text-red-800   ":" capitalize font-bold    text-green-600  "} >{status}</h1></td>
       </tr>
+      {/* className="capitalize text-base font-semibold rounded py-2 px-4" */}
     </>
   );
 };
