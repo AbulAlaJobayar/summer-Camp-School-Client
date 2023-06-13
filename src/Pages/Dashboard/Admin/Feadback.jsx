@@ -1,19 +1,29 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
-const Feadback = ({ closeModal, isOpen, id }) => {
-
-  const [message, setMessage] = useState('');
+const Feadback = ({ closeModal, isOpen, id,setIsOpen }) => {
+  const [message, setMessage] = useState("");
 
   const handleChange = (event) => {
-   
     setMessage(event.target.value);
   };
-  console.log(message)
-  
+  console.log(message);
 
   const handleFeedback = (id) => {
+    const updateStatus = { feadback: message};
 
-    console.log(id);
+    fetch(`http://localhost:5000/feedback/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updateStatus),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setIsOpen(false)
+        
+ });
   };
 
   return (
@@ -47,31 +57,33 @@ const Feadback = ({ closeModal, isOpen, id }) => {
                   as="h3"
                   className="text-lg font-medium text-center leading-6 text-gray-900"
                 >
-                  Feadback!
+                  Feedback!
                 </Dialog.Title>
 
-                <form onSubmit={handleFeedback}>
-                  <div className="mt-2">
-                    <textarea
-                       onChange={handleChange}
-                      placeholder="Bio"
-                      className="textarea textarea-bordered textarea-md w-full max-w-xs"
-                    ></textarea>
-                  </div>
-
-                  <hr className="mt-8 " />
-
+                <div className="mt-2">
+                  <textarea
+                    onChange={handleChange}
+                    placeholder="Give a Feedback....."
+                    className="textarea textarea-bordered textarea-md w-full max-w-full"
+                  ></textarea>
+                </div>
+                <hr className="mt-8 " />
+                <div className="flex mt-2 justify-around">
                   <button
-                    type="submit"
+                    type="button"
                     className="inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
                     onClick={() => handleFeedback(id)}
                   >
-                   Submit
+                    Continue
                   </button>
-
-                </form>
-               
-
+                  <button
+                    type="button"
+                    className="inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
+                    onClick={closeModal}
+                  >
+                    Cancel
+                  </button>
+                </div>
               </Dialog.Panel>
             </Transition.Child>
           </div>
