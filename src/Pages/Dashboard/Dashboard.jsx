@@ -43,7 +43,7 @@ const role = datas[0]?.role
 
 {
      role && role==='instructor' &&(<>
-       <li><Link to='/dashboard'>Add a Class</Link></li>
+       <li><Link to='/dashboard/addclass'>Add a Class</Link></li>
        <li><Link to='/dashboard/instructorclass'>My Classes</Link></li>
 
      </>)
@@ -53,7 +53,7 @@ const role = datas[0]?.role
 {/* Admin */}
 {
      role && role==='admin' &&(<>
-       <li><Link to='/deshboard/addaclass'>Manage Classes</Link></li>
+       <li><Link to='/dashboard/manageclass'>Manage Classes</Link></li>
        <li><Link to='/deshboard/class'>Manage Users</Link></li>
 
      </>)

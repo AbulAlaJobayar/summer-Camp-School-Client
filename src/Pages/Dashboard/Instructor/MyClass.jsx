@@ -11,7 +11,6 @@ const MyClass = () => {
       .then((res) => res.json())
       .then((data) => setAllClass(data));
   }, [user.email]);
-  console.log(allclass);
   return (
     <div className="overflow-x-auto w-full h-full mt-10">
       <table className="table">
