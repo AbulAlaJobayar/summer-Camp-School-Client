@@ -4,12 +4,12 @@ import Container from "../../Shared/Container";
 
 const Class = () => {
   const [datas, SetDatas] = useState([]);
-  const [disable,setDisable]=useState(false)
+  const [btndisable,setDisable]=useState(false)
   useEffect(() => {
     fetch("http://localhost:5000/approvedclass")
       .then((res) => res.json())
       .then((data) => SetDatas(data));
-  }, [disable]);
+  }, [btndisable]);
   console.log(datas);
   return (
     
@@ -21,7 +21,7 @@ const Class = () => {
     <Container>
      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mt-10 gap-10">
      {
-       datas.map(data=><Card key={data._id} data={data} setDisable={setDisable}></Card>)
+       datas.map(data=><Card key={data._id} data={data} setDisable={setDisable} btndisable={btndisable}></Card>)
       }
      </div>
       </Container>

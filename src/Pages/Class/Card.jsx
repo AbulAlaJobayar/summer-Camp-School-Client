@@ -1,8 +1,13 @@
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 
-const Card = ({ data ,setDisable}) => {
+const Card = ({ data ,setDisable,btndisable}) => {
+
   
+// todo new set up
+
+
+
 
 const {user} =useContext(AuthContext)      
   console.log(data);
@@ -35,6 +40,7 @@ const handleBooked=()=>{
             })
             .then(res=>res.json())
             .then(data=>{
+              setDisable(true)
               console.log(data)
               
             })
@@ -59,7 +65,7 @@ const handleBooked=()=>{
           
 
           <div className="card-actions justify-center ">
-            <button onClick={handleBooked} className="btn btn-primary" disabled={instructoremail==user?.email || setDisable(true)}>Purchases</button>
+            <button onClick={handleBooked} className="btn btn-primary" disabled={instructoremail===user?.email || btndisable===true}>Purchases</button>
           </div>
         </div>
       </div>
