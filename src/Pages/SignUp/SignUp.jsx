@@ -144,6 +144,7 @@ const SignUp = () => {
               </label>
               <input
                 required
+                referrerPolicy='no-referrer'
                 type="file"
                 id="image"
                 name="image"

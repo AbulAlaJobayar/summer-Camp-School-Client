@@ -38,7 +38,8 @@ const role = datas[0]?.role
        <li><Link to='/deshboard/payment'>Payment</Link></li>
 
      </>)
-}
+  }
+
 {/* Instructor role */}
 
 {

@@ -22,7 +22,7 @@ console.log('valid user', user);
         <Link to="/">Instructors</Link>
       </li>
       <li className="text-lg font-semibold">
-        <Link to="/"> Classes</Link>
+        <Link to="/class"> Classes</Link>
       </li>
      {
       user &&  <li className="text-lg font-semibold">

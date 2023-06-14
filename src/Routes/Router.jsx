@@ -9,6 +9,7 @@ import AddaClass from "../Pages/Dashboard/Instructor/AddaClass";
 import MyClass from "../Pages/Dashboard/Instructor/MyClass";
 import ManageClass from "../Pages/Dashboard/Admin/ManageClass";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers/ManageUsers";
+import Class from "../Pages/Class/Class";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
         element: <SignUp></SignUp>,
       },
       {
+        path: "class",
+        element:<Class></Class>
+      },
+      {
         path: "/dashboard",
         element: (
           <PrivateRoute>
@@ -36,24 +41,25 @@ const router = createBrowserRouter([
         ),
         children: [
           {
-            path:'/dashboard/addclass',
-            element:<AddaClass></AddaClass>
+            path: "/dashboard/addclass",
+            element: <AddaClass></AddaClass>,
           },
           {
-            path:'/dashboard/instructorclass',
-            element:<MyClass></MyClass>
+            path: "/dashboard/instructorclass",
+            element: <MyClass></MyClass>,
           },
           {
-            path:"/dashboard/manageclass",
-            element:<PrivateRoute><ManageClass></ManageClass></PrivateRoute>
-           
+            path: "/dashboard/manageclass",
+            element: (
+              <PrivateRoute>
+                <ManageClass></ManageClass>
+              </PrivateRoute>
+            ),
           },
           {
-            path:"/dashboard/manageusers",
-            element:<ManageUsers></ManageUsers>
-          }
-
-          
+            path: "/dashboard/manageusers",
+            element: <ManageUsers></ManageUsers>,
+          },
         ],
       },
     ],
