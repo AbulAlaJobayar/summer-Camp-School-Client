@@ -1,7 +1,8 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AiOutlineEye,AiTwotoneEyeInvisible} from "react-icons/ai";
 import Swal from 'sweetalert2'
 import { FcGoogle } from "react-icons/fc";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 
 import { useForm } from "react-hook-form";
@@ -14,6 +15,9 @@ const Login = () => {
   const from = location.state?.from?.pathname || "/";
 
   const { register, handleSubmit } = useForm();
+
+  const [changePassword, setChangePassword] = useState(true);
+  const changeIcon = changePassword === true ? false : true;
 
   const onSubmit = (data) => {
     const email = data.email;
@@ -103,13 +107,20 @@ const Login = () => {
                 </label>
               </div>
               <input
-                className="w-full px-3 py-2 border rounded-md border-gray-300  bg-gray-200 text-gray-900"
-                type="password"
+                className="w-full px-3 py-2 border rounded-md border-gray-300  bg-gray-200 text-gray-900 relative"
+                type={changePassword ? "password" : "text"}
                 {...register("password", {
                   required: true,
                 })}
                 placeholder="password"
               />
+               <span className="icon absolute -ml-10 mt-3 "
+                 onClick={() => {
+                    setChangePassword(changeIcon);
+                 }}
+              >
+                 {changeIcon ? <AiOutlineEye></AiOutlineEye> : <AiTwotoneEyeInvisible  />}
+              </span>
             </div>
           </div>
 
