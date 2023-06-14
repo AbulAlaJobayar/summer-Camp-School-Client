@@ -1,49 +1,82 @@
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import { useLocation, useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 
-const Card = ({ data ,setDisable,btndisable}) => {
+const Card = ({data}) => {
 
-  
-// todo new set up
-
-
+const {
+  photo,
+  classname,
+  instructorname,
+  instructoremail,
+  seat,
+  price,
+  _id
+ 
+} = data;
 
 
 const {user} =useContext(AuthContext)      
-  console.log(data);
-  const {
-    photo,
-    classname,
-    instructorname,
-    instructoremail,
-    seat,
-    price,
-   
-  } = data;
-const handleBooked=()=>{
+const navigate=useNavigate();
+const location=useLocation();
+  
+
+const handleBooked=(item)=>{
+  console.log(item);
        const enroll={
-              photo:data.photo,
-              classname:data.classname,
-              instructorname:data.instructorname,
+              itemid:_id,
+              photo,
+              classname,
+              instructorname,
               instructoremail,
-              seat:data.seat,
+              seat,
+              price,
               email:user.email,
-              pay:"unpaid"
+              pay:'unpaid'
+
        }
 
-       fetch("http://localhost:5000/studentdata", {
-              method: "POST",
-              headers: {
-                "content-type": "application/json",
-              },
-              body: JSON.stringify(enroll),
+       if(user && user.email){
+        fetch("http://localhost:5000/studentdata",{
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(enroll),
+        }).then(res=>res.json())
+        .then(data=>{
+          console.log(data);
+          if(data.insertedId){
+            Swal.fire({
+              position: 'top-center',
+              icon: 'success',
+              title: 'course added on the cart',
+              showConfirmButton: false,
+              timer: 1500
             })
-            .then(res=>res.json())
-            .then(data=>{
-              setDisable(true)
-              console.log(data)
-              
-            })
+          }
+
+
+        })
+
+       }
+
+       else{
+        Swal.fire({
+          title: 'please log in before selecting the course',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'login now!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+              navigate('/login',{state:{from:location}})
+            
+          }
+        })
+       }
 
 }
 
@@ -64,8 +97,8 @@ const handleBooked=()=>{
             </div>
           
 
-          <div className="card-actions justify-center ">
-            <button onClick={handleBooked} className="btn btn-primary" disabled={instructoremail===user?.email || btndisable===true}>Purchases</button>
+          <div className="card-actions justify-center "  onClick={()=>handleBooked(data)}>
+            <button className="btn btn-primary">Purchases</button>
           </div>
         </div>
       </div>
