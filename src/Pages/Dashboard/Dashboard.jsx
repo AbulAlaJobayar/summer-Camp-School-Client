@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import { Fade } from "react-awesome-reveal";
 
 const Dashboard = () => {
        const {user}=useContext(AuthContext)
@@ -33,9 +34,10 @@ const role = datas[0]?.role
           {/* student role */}
 {
      role && role==='student' &&(<>
-       <li><Link to='/deshboard/myclass'>My Classes</Link></li>
-       <li><Link to='/deshboard/enroll'>Enrolled Classes</Link></li>
-       <li><Link to='/deshboard/payment'>Payment</Link></li>
+     <h1><Fade>Student Dashboard</Fade></h1>
+       <li><Link to='/deshboard/myclass'>  <Fade> My Classes</Fade></Link></li>
+       <li><Link to='/deshboard/enroll'><Fade> Enrolled Classes</Fade> </Link></li>
+       <li><Link to='/deshboard/payment'> <Fade> Payment</Fade></Link></li>
 
      </>)
   }
@@ -44,8 +46,8 @@ const role = datas[0]?.role
 
 {
      role && role==='instructor' &&(<>
-       <li><Link to='/dashboard/addclass'>Add a Class</Link></li>
-       <li><Link to='/dashboard/instructorclass'>My Classes</Link></li>
+       <li><Link to='/dashboard/addclass'> <Fade>Add a Class</Fade> </Link></li>
+       <li><Link to='/dashboard/instructorclass'> <Fade> My Classes</Fade></Link></li>
 
      </>)
 }
@@ -54,8 +56,8 @@ const role = datas[0]?.role
 {/* Admin */}
 {
      role && role==='admin' &&(<>
-       <li><Link to='/dashboard/manageclass'>Manage Classes</Link></li>
-       <li><Link to='/dashboard/manageusers'>Manage Users</Link></li>
+       <li><Link to='/dashboard/manageclass'> <Fade>Manage Classes</Fade> </Link></li>
+       <li><Link to='/dashboard/manageusers'> <Fade>Manage Users</Fade> </Link></li>
 
      </>)
 }
