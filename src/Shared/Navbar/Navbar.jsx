@@ -6,13 +6,10 @@ import { AuthContext } from "../../providers/AuthProvider";
 
 
 
+
 const Navbar = () => {
 
 const {user}=useContext(AuthContext)
-console.log('valid user', user);
-
-
-
   const navOption = (
     <>
       <li className="text-lg font-semibold">

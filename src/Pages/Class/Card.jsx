@@ -2,8 +2,10 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
+import RQuery from "../../Component/RQuery";
 
-const Card = ({data}) => {
+const Card = ({data,role}) => {
+
 
 const {
   photo,
@@ -20,7 +22,10 @@ const {
 const {user} =useContext(AuthContext)      
 const navigate=useNavigate();
 const location=useLocation();
-  
+
+const [,refetch]=RQuery()
+
+
 
 const handleBooked=(item)=>{
   console.log(item);
@@ -48,6 +53,7 @@ const handleBooked=(item)=>{
         .then(data=>{
           console.log(data);
           if(data.insertedId){
+           refetch()
             Swal.fire({
               position: 'top-center',
               icon: 'success',
@@ -98,7 +104,7 @@ const handleBooked=(item)=>{
           
 
           <div className="card-actions justify-center "  onClick={()=>handleBooked(data)}>
-            <button className="btn btn-primary">Purchases</button>
+            <button className="btn btn-primary" disabled={role==="admin" || role ==="instructor"}>Purchases</button>
           </div>
         </div>
       </div>

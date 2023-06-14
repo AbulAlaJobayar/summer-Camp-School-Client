@@ -31,48 +31,7 @@ const ManageSingleUser = ({item, i,handleMakeAdmin,handleMakeInstructor}) => {
       <td>
       <button onClick={() => handleMakeInstructor(_id)} className="btn btn-primary"  disabled={role === "instructor"}>Instructor</button> </td>
       
-      {/* <td>
-        <h1
-          className={
-            status && status === "denied"
-              ? " capitalize font-bold  text-red-800   "
-              : " capitalize font-bold    text-green-600  "
-          }
-        >
-          {status}
-        </h1>
-      </td>
-
-      <td>
-        <button
-          disabled={status == "denied" || status == "approved"}
-          onClick={() => handleApproved(_id)}
-          className="btn btn-success"
-        >
-          Approve
-        </button>
-      </td>
-      <td>
-        {" "}
-        <button
-          disabled={status == "denied" || status == "approved"}
-          onClick={() => handleDenied(_id)}
-          className="btn btn-error"
-        >
-          Denied
-        </button>{" "}
-      </td>
-
-      <td>
-        {" "}
-        <button
-          disabled={status == "pending" || status == "approved"}
-          onClick={() => setIsOpen(true)}
-          className="btn btn-primary"
-        >
-          Feadback
-        </button>{" "}
-      </td> */}
+      
     </tr>
   );
 };

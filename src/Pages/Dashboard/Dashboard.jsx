@@ -32,15 +32,16 @@ const role = datas[0]?.role
         <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
           {/* Sidebar content here */}
           {/* student role */}
-{
-     role && role==='student' &&(<>
+          {/* todo */}
+{/* {
+     role && role==='student' &&(<> */}
      <h1><Fade>Student Dashboard</Fade></h1>
-       <li><Link to='/deshboard/myclass'>  <Fade> My Classes</Fade></Link></li>
+       <li><Link to='/dashboard/myclass'>  <Fade> My Classes</Fade></Link></li>
        <li><Link to='/deshboard/enroll'><Fade> Enrolled Classes</Fade> </Link></li>
        <li><Link to='/deshboard/payment'> <Fade> Payment</Fade></Link></li>
 
-     </>)
-  }
+     {/* </>)
+  } */}
 
 {/* Instructor role */}
 
