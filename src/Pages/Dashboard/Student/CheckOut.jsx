@@ -112,7 +112,7 @@ if(paymentIntent.status==='succeeded'){
         </div>
       </form>
       {cardError && <p className="text-red-600 ml-8">{cardError}</p>}
-      {transactionId && <p className="text-green-600"> transactionID :{transactionIdgit }</p>}
+      {transactionId && <p className="text-green-600"> transactionID :{transactionId }</p>}
     </>
   );
 };
