@@ -1,5 +1,16 @@
-const StudentData = ({ item ,i}) => {
-  const { _id, itemid, photo, classname, instructorname, price, seat } = item;
+
+import { useState } from "react";
+import Payment from "./Payment";
+
+const StudentData = ({ item ,i,handleDelete}) => {
+  const { _id, photo, classname, instructorname, price, seat } = item;
+
+
+  const [isOpen, setIsOpen]=useState(false)
+ const closeModal=()=>{
+  setIsOpen(false)
+}
+
 
   return (
     <>
@@ -26,12 +37,13 @@ const StudentData = ({ item ,i}) => {
         </td>
         <td>{seat}</td>
         <th>
-          <button className="btn btn-ghost btn-xs">Delete</button>
+          <button className="btn btn-outline btn-xs" onClick={()=>handleDelete(_id)}>Delete</button>
         </th>
         <th>
-          <button className="btn btn-ghost btn-xs">Pay</button>
+        <button className="btn btn-outline btn-xs" onClick={()=>setIsOpen(true)} >Pay</button>
         </th>
       </tr>
+      <Payment isOpen={isOpen}  closeModal={closeModal} item={item}></Payment>
     </>
   );
 };

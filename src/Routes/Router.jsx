@@ -13,6 +13,7 @@ import Class from "../Pages/Class/Class";
 import ErrorPage from "../Pages/Error/ErrorPage";
 import StudentClass from "../Pages/Dashboard/Student/StudentClass";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -66,7 +67,8 @@ const router = createBrowserRouter([
           {
             path:"/dashboard/myclass",
             element:<PrivateRoute><StudentClass></StudentClass></PrivateRoute>
-          }
+          },
+         
         ],
       },
     ],
