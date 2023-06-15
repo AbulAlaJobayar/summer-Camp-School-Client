@@ -18,12 +18,12 @@ const Home = () => {
   const [datas, setDatas] = useState([]);
   const [teachers, setTeachers] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/class")
+    fetch("http://localhost:5000/approvedclass")
       .then((res) => res.json())
       .then((data) => setDatas(data));
   }, []);
   useEffect(() => {
-    fetch("http://localhost:5000/teacher")
+    fetch("http://localhost:5000/instructor")
       .then((res) => res.json())
       .then((data) => setTeachers(data));
   }, []);
@@ -144,14 +144,16 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mx-4">
-            {datas.map((data) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mx-4">
+            {datas.slice(0,6).map((data) => (
               <PopularClass key={data._id} data={data}></PopularClass>
             ))}
           </div>
         </Container>
       </section>
 
+
+{/* instructor section */}
       <section className="bg-neutral-100">
         <Container>
           <div className="mx-auto text-center my-[70px] ">
@@ -166,7 +168,7 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-5 mx-4">
-            {teachers.map((teacher) => (
+            {teachers.slice(0,6).map((teacher) => (
               <PopularInstactor
                 key={teacher._id}
                 teacher={teacher}

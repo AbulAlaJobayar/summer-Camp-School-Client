@@ -1,25 +1,34 @@
 
 
-const PopularClass = (data) => {
-  console.log(data);
+const PopularClass = ({data}) => {
+  const {
+    photo,
+    classname,
+    instructorname,
+    instructoremail,
+    seat,
+    price,
+   
+  } = data;
+  
        return (
-              <div>
-                  <div className="card card-compact w-full bg-base-100 shadow-xl">
-            <figure>
-              <img
-                src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                alt="Shoes"
-              />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title">{data.name}</h2>
-              <p>If a dog chews shoes whose shoes does he choose?</p>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
-              </div> 
-             </div> 
-           </div> 
+        <>
+        <div className="card card-side bg-base-100 shadow-xl mb-4">
+          <figure className="w-1/2">
+            <img className="w-full h-full" src={photo} alt="photo" />
+          </figure>
+          <div className="card-body">
+            <h2 className="card-title">{classname}</h2>
+         
+              <p>Name: {instructorname}</p>
+              <p>Email: {instructoremail}</p>
+              <div className="flex justify-between">
+                <p className="text-[#442e66] text-base font-xl" >price: ${price}</p>
+                <p>seat:{seat}</p>
               </div>
+          </div>
+        </div>
+      </>
        );
 };
 

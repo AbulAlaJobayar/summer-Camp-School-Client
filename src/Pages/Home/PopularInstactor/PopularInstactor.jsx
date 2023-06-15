@@ -11,8 +11,8 @@ const PopularInstactor = ({teacher}) => {
               />
             </figure>
             <div className="card-body">
-              <h2 className="card-title font-bold">{teacher.name}</h2>
-              <p className="text-base font-semibold">{teacher.subject}</p> 
+              <h2 className="card-title font-bold capitalize">{teacher.name}</h2>
+              <p className="text-base font-semibold">{teacher.email}</p> 
              </div> 
            </div> 
               </div>

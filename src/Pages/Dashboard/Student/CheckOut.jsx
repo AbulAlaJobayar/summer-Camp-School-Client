@@ -10,9 +10,10 @@ const CheckOut = ({ item, closeModal }) => {
   const stripe = useStripe();
   const elements = useElements();
   const {user}=useContext(AuthContext)
-  const [cardError, setCardError] = useState("");
   const[axiosSecure]=useAxiosSecure()
-
+  const [cardError, setCardError] = useState("");
+const [processing,setProcessing]=useState(false);
+const [transactionId, setTransactionId]=useState('')
   
   const [clientSecret, setClientSecret] = useState("");
   const  price =item.price
@@ -50,6 +51,7 @@ const CheckOut = ({ item, closeModal }) => {
       setCardError("");
       // console.log("[PaymentMethod]", paymentMethod);
     }
+    setProcessing(true)
     const {paymentIntent, error:confirmError} = await stripe.confirmCardPayment(
       clientSecret,
       {
@@ -66,7 +68,11 @@ const CheckOut = ({ item, closeModal }) => {
       console.log(confirmError);
     }
 console.log(paymentIntent)
-
+setProcessing(false)
+if(paymentIntent.status==='succeeded'){
+  setTransactionId(paymentIntent.id)
+  const transactionId=paymentIntent.id;
+}
   };
 
   return (
@@ -98,7 +104,7 @@ console.log(paymentIntent)
           </button>
           <button
             type="submit"
-            disabled={!stripe || !clientSecret}
+            disabled={!stripe || !clientSecret ||processing}
             className="inline-flex justify-center rounded-md border border-transparent bg-green-900 px-4 py-2 text-sm font-medium text-white"
           >
             Pay ${price}
@@ -106,6 +112,7 @@ console.log(paymentIntent)
         </div>
       </form>
       {cardError && <p className="text-red-600 ml-8">{cardError}</p>}
+      {transactionId && <p className="text-green-600"> transactionID :{transactionIdgit }</p>}
     </>
   );
 };
