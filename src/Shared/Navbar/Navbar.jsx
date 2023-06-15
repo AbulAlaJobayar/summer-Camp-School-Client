@@ -16,7 +16,7 @@ const {user}=useContext(AuthContext)
         <Link to="/">Home</Link>
       </li>
       <li className="text-lg font-semibold">
-        <Link to="/">Instructors</Link>
+        <Link to="/instructor">Instructors</Link>
       </li>
       <li className="text-lg font-semibold">
         <Link to="/class"> Classes</Link>
