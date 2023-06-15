@@ -37,7 +37,7 @@ const role = datas[0]?.role
      role && role==='student' &&(<>
      <h1><Fade>Student Dashboard</Fade></h1>
        <li><Link to='/dashboard/myclass'>  <Fade> My Classes</Fade></Link></li>
-       <li><Link to='/deshboard/enroll'><Fade> Enrolled Classes</Fade> </Link></li>
+       <li><Link to='/dashboard/enrollclass'><Fade> Enrolled Classes</Fade> </Link></li>
        <li><Link to='/deshboard/payment'> <Fade> Payment</Fade></Link></li>
 
      </>)

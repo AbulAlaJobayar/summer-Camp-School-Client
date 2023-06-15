@@ -6,7 +6,7 @@ const StudentClass = () => {
   const [studentdata,refetch] = RQuery();
 
   const unpay = studentdata.filter((item) => item.pay == "unpaid");
-  console.log(unpay);
+  console.log(studentdata);
 
 
   const handleDelete=(id)=>{
