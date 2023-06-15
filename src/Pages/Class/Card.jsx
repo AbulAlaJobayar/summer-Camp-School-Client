@@ -104,7 +104,7 @@ const handleBooked=(item)=>{
           
 
           <div className="card-actions justify-center "  onClick={()=>handleBooked(data)}>
-            <button className="btn btn-primary" disabled={role==="admin" || role ==="instructor"}>Purchases</button>
+            <button className={`btn  ${seat=='0'?"btn-error":"btn-primary"}`} disabled={role==="admin" || role ==="instructor" || seat==='0'}>Purchases</button>
           </div>
         </div>
       </div>
