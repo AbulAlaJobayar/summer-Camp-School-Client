@@ -60,7 +60,7 @@ const role = datas[0]?.role
 {/* Admin */}
 {
      role && role==='admin' &&(<>
-      <h1 className="text-3xl font-bold mt-5"><Fade delay={1e3} cascade damping={1e-1}>Instructor Dashboard</Fade></h1>
+      <h1 className="text-3xl font-bold mt-5"><Fade delay={1e3} cascade damping={1e-1}>Admin Dashboard</Fade></h1>
      <hr />
        <li><Link to='/dashboard/manageclass'> <Fade delay={1e3} cascade damping={1e-1}>Manage Classes</Fade> </Link></li>
        <li><Link to='/dashboard/manageusers'> <Fade delay={1e3} cascade damping={1e-1}>Manage Users</Fade> </Link></li>

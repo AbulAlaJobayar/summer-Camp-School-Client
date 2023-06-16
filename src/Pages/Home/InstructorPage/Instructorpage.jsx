@@ -18,7 +18,7 @@ const Instructorpage = () => {
         </h1>
       </div>
       <Container>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mt-10 gap-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-10 mx-10 gap-10">
      {
        datas.map(data=><SingleInstructor key={data._id} data={data}  ></SingleInstructor>
        )}

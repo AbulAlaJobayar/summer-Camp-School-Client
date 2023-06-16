@@ -31,4 +31,3 @@
 
  [Live Site](https://assingment-12-client.web.app/)
 
-git add .
