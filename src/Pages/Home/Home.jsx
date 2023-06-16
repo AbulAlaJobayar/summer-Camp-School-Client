@@ -18,12 +18,12 @@ const Home = () => {
   const [datas, setDatas] = useState([]);
   const [teachers, setTeachers] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/approvedclass")
+    fetch("https://assinment-12-server-ten.vercel.app/approvedclass")
       .then((res) => res.json())
       .then((data) => setDatas(data));
   }, []);
   useEffect(() => {
-    fetch("http://localhost:5000/instructor")
+    fetch("https://assinment-12-server-ten.vercel.app/instructor")
       .then((res) => res.json())
       .then((data) => setTeachers(data));
   }, []);

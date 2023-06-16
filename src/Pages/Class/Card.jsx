@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
@@ -24,6 +24,7 @@ const navigate=useNavigate();
 const location=useLocation();
 
 const [,refetch]=RQuery()
+const [btnDis,setBtnDis]=useState(false)
 
 
 
@@ -43,7 +44,7 @@ const handleBooked=(item)=>{
        }
 
        if(user && user.email){
-        fetch("http://localhost:5000/studentdata",{
+        fetch("https://assinment-12-server-ten.vercel.app/studentdata",{
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -61,6 +62,8 @@ const handleBooked=(item)=>{
               showConfirmButton: false,
               timer: 1500
             })
+            setBtnDis(true);
+
           }
 
 
@@ -88,7 +91,7 @@ const handleBooked=(item)=>{
 
   return (
     <>
-      <div className="card card-side bg-base-100 shadow-xl mb-4">
+      <div className={`card card-side  shadow-xl mb-4 ${seat==='0'?"bg-red-500":"bg-base-100"}`}>
         <figure className="w-1/2">
           <img className="w-full h-full" src={photo} alt="photo" />
         </figure>
@@ -104,7 +107,7 @@ const handleBooked=(item)=>{
           
 
           <div className="card-actions justify-center "  onClick={()=>handleBooked(data)}>
-            <button className={`btn  ${seat=='0'?"btn-error":"btn-primary"}`} disabled={role==="admin" || role ==="instructor" || seat==='0'}>Purchases</button>
+            <button className={`btn  ${seat=='0'?"btn-error":"btn-primary"}`} disabled={role==="admin" || role ==="instructor" || seat==='0' ||!user || btnDis}>Purchases</button>
           </div>
         </div>
       </div>

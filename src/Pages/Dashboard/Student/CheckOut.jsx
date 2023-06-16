@@ -17,6 +17,7 @@ const [transactionId, setTransactionId]=useState('')
   
   const [clientSecret, setClientSecret] = useState("");
   const  price =item.price
+  
 
   useEffect(()=>{
     if (price > 0) {
@@ -71,7 +72,25 @@ console.log(paymentIntent)
 setProcessing(false)
 if(paymentIntent.status==='succeeded'){
   setTransactionId(paymentIntent.id)
-  const transactionId=paymentIntent.id;
+//  save payment history
+const payment={
+  name:user?.displayName,
+  email:user?.email,
+  cartItems:item._id,
+  menuItems:item.itemid,
+  transactionId:paymentIntent.id,
+  price,
+  photo:item.photo,
+  instructorname:item.instructorname,
+  instructoremail:item.instructoremail,
+  date:new Date(),
+  status:"payment success"
+
+}
+axiosSecure.post('/payments',payment).then(res=>{
+console.log(res.data)
+})
+
 }
   };
 

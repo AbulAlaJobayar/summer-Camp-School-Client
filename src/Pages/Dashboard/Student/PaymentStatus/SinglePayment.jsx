@@ -1,7 +1,7 @@
 
-const SingleData = ({ item ,i,}) => {
-       const {status, photo, instructoremail
-        , instructorname, price, date} = item;
+
+const SinglePayment = ({item,i}) => {
+       const {name,email,transactionId,price,photo,date} = item;
        return (
               <>
               <tr>
@@ -16,19 +16,19 @@ const SingleData = ({ item ,i,}) => {
                   </div>
                 </td>
                 <td>
-                  <div className="font-bold">{instructorname}</div>
+                  <div className="font-bold">{name}</div>
                 </td>
         
                 <td>
                   <div className="text-sm opacity-50">
-                  {instructoremail}</div>
+                  {email}</div>
                 </td>
                 <td>
                   <h1>${price}</h1>
                 </td>
                 <td>{date}</td>
                 <th>
-                 {status}
+                 {transactionId}
                 </th>
                 
               </tr>
@@ -37,4 +37,4 @@ const SingleData = ({ item ,i,}) => {
        );
 };
 
-export default SingleData;
+export default SinglePayment;

@@ -1,14 +1,11 @@
 import PaymentData from "../../../../Component/PaymentData";
-import SingleData from "./SingleData";
+import SinglePayment from "./SinglePayment";
 
 
-const EnrollClass = () => {
-  
+const PaymentStatus = () => {
        const [payment]=PaymentData()
-     const paid=payment
-       console.log(payment);
-      
-
+       const paid=payment
+         console.log(payment);
        return (
               <div className="overflow-x-auto w-full h-full mt-10">
               <table className="table">
@@ -19,17 +16,17 @@ const EnrollClass = () => {
                      #
                     </th>
                     <th>picture</th>
-                    <th>Instructor Name</th>
-                    <th>Instructor Email</th>
-                    <th> Price</th>
-                    <th> date</th>
-                    <th> status</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Price</th>
+                    <th>date</th>
+                    <th>transactionId</th>
                   
                   </tr>
                 </thead>
                 <tbody>
                   {paid?.map((item,i) => (
-                     <SingleData key={item._id} item={item} i={i}></SingleData>
+                     <SinglePayment key={item._id} item={item} i={i}></SinglePayment>
                     
                   ))}
                 </tbody>
@@ -38,4 +35,4 @@ const EnrollClass = () => {
        );
 };
 
-export default EnrollClass;
+export default PaymentStatus;

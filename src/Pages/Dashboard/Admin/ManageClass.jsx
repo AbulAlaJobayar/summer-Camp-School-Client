@@ -6,14 +6,14 @@ const ManageClass = () => {
   const [datas, setDatas] = useState([]);
   const [refetch, setRefetch] = useState(false);
   useEffect(() => {
-    fetch("http://localhost:5000/alldata")
+    fetch("https://assinment-12-server-ten.vercel.app/alldata")
       .then((res) => res.json())
       .then((data) => setDatas(data));
   }, [refetch]);
 
   const handleApproved = (id) => {
     const updateStatus = { status: "approved" };
-    fetch(`http://localhost:5000/updatedata/${id}`, {
+    fetch(`https://assinment-12-server-ten.vercel.app/updatedata/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -37,7 +37,7 @@ const ManageClass = () => {
   const handleDenied = (id) => {
        const updateStatus = { status: "denied" };
 
-    fetch(`http://localhost:5000/updatedata/${id}`, {
+    fetch(`https://assinment-12-server-ten.vercel.app/updatedata/${id}`, {
        method: "PUT",
        headers: {
          "content-type": "application/json",

@@ -5,7 +5,7 @@ import SingleInstructor from "./SingleInstructor";
 const Instructorpage = () => {
   const [datas, setDatas] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/instructor")
+    fetch("https://assinment-12-server-ten.vercel.app/instructor")
       .then((res) => res.json())
       .then((data) => setDatas(data));
   }, []);

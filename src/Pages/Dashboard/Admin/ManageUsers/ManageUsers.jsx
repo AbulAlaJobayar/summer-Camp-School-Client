@@ -8,14 +8,14 @@ const ManageUsers = () => {
        const [refetch, setRefetch] = useState(false);
 
        useEffect(()=>{
-              fetch('http://localhost:5000/adminmanage')
+              fetch('https://assinment-12-server-ten.vercel.app/adminmanage')
               .then(res=>res.json())
               .then(data=>setUsers(data))
        },[refetch])
 
 const handleMakeAdmin=(id)=>{
   const updateStatus = { role:"admin" };
-  fetch(`http://localhost:5000/updaterole/${id}`, {
+  fetch(`https://assinment-12-server-ten.vercel.app/updaterole/${id}`, {
     method: "PUT",
     headers: {
       "content-type": "application/json",
@@ -36,7 +36,7 @@ const handleMakeAdmin=(id)=>{
 };
 const handleMakeInstructor=(id)=>{
   const updateStatus = { role:"instructor" };
-  fetch(`http://localhost:5000/updaterole/${id}`, {
+  fetch(`https://assinment-12-server-ten.vercel.app/updaterole/${id}`, {
     method: "PUT",
     headers: {
       "content-type": "application/json",

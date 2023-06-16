@@ -14,6 +14,7 @@ import ErrorPage from "../Pages/Error/ErrorPage";
 import StudentClass from "../Pages/Dashboard/Student/StudentClass";
 import EnrollClass from "../Pages/Dashboard/Student/EnrollClass/EnrollClass";
 import Instructorpage from "../Pages/Home/InstructorPage/Instructorpage";
+import PaymentStatus from "../Pages/Dashboard/Student/PaymentStatus/PaymentStatus";
 
 
 const router = createBrowserRouter([
@@ -77,6 +78,10 @@ const router = createBrowserRouter([
           {
             path:"/dashboard/enrollclass",
             element:<EnrollClass></EnrollClass>
+          },
+          {
+            path:"/dashboard/payment",
+            element:<PaymentStatus></PaymentStatus>
           }
          
         ],

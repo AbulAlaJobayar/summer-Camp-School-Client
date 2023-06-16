@@ -8,14 +8,14 @@ const Class = () => {
 const {user} =useContext(AuthContext)
   const [datas, SetDatas] = useState([])
   useEffect(() => {
-    fetch("http://localhost:5000/approvedclass")
+    fetch("https://assinment-12-server-ten.vercel.app/approvedclass")
       .then((res) => res.json())
       .then((data) => SetDatas(data));
   }, []);
  
 const [items,setItems]=useState([])
 useEffect(()=>{
-  fetch(`http://localhost:5000/users/${user?.email}`)
+  fetch(`https://assinment-12-server-ten.vercel.app/users/${user?.email}`)
   .then(res=>res.json())
   .then(data=>setItems(data))
 

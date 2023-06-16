@@ -7,7 +7,7 @@ export const saveUser = (user) => {
     role:"student"
   };
 
-  fetch(`http://localhost:5000/users/${user.email}`, {
+  fetch(`https://assinment-12-server-ten.vercel.app/users/${user.email}`, {
     method: "PUT",
     headers: {
       "content-type": "application/json",
@@ -24,7 +24,7 @@ export const moderator = (email) => {
     role: "host",
   };
 
-  return fetch(`http://localhost:5000/users/${email}`, {
+  return fetch(`https://assinment-12-server-ten.vercel.app/users/${email}`, {
     method: "PUT",
     headers: {
       "content-type": "application/json",
@@ -35,7 +35,7 @@ export const moderator = (email) => {
 
 // Get role
 export const getRole = async (email) => {
-  const response = await fetch(`http://localhost:5000/users/${email}`);
+  const response = await fetch(`https://assinment-12-server-ten.vercel.app/users/${email}`);
   const user = await response.json();
   return user?.role;
 };

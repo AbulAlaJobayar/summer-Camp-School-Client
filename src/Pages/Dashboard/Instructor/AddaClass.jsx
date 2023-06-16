@@ -27,7 +27,7 @@ const AddaClass = () => {
      
     };
 
-    fetch("http://localhost:5000/postdata", {
+    fetch("https://assinment-12-server-ten.vercel.app/postdata", {
       method: "POST",
       headers: {
         "content-type": "application/json",

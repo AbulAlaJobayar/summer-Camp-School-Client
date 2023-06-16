@@ -7,7 +7,7 @@ const Dashboard = () => {
        const {user}=useContext(AuthContext)
        const [datas, setDatas]=useState([])
        useEffect(()=>{
-              fetch(`http://localhost:5000/users/${user?.email}`).then(res=>res.json()).then(data=>setDatas(data))
+              fetch(`https://assinment-12-server-ten.vercel.app/users/${user?.email}`).then(res=>res.json()).then(data=>setDatas(data))
 
        },[user?.email])
       
@@ -35,10 +35,11 @@ const role = datas[0]?.role
          
 {
      role && role==='student' &&(<>
-     <h1><Fade>Student Dashboard</Fade></h1>
-       <li><Link to='/dashboard/myclass'>  <Fade> My Classes</Fade></Link></li>
-       <li><Link to='/dashboard/enrollclass'><Fade> Enrolled Classes</Fade> </Link></li>
-       <li><Link to='/deshboard/payment'> <Fade> Payment</Fade></Link></li>
+     <h1 className="text-3xl font-bold mt-5"><Fade delay={1e3} cascade damping={1e-1}>Student Dashboard</Fade></h1>
+     <hr />
+       <li><Link to='/dashboard/myclass'>  <Fade delay={1e3} cascade damping={1e-1}> My Classes</Fade ></Link></li>
+       <li><Link to='/dashboard/enrollclass'><Fade delay={1e3} cascade damping={1e-1}> Enrolled Classes</Fade> </Link></li>
+       <li><Link to='/dashboard/payment'> <Fade delay={1e3} cascade damping={1e-1}> Payment</Fade></Link></li>
 
      </>)
   }
@@ -47,8 +48,10 @@ const role = datas[0]?.role
 
 {
      role && role==='instructor' &&(<>
-       <li><Link to='/dashboard/addclass'> <Fade>Add a Class</Fade> </Link></li>
-       <li><Link to='/dashboard/instructorclass'> <Fade> My Classes</Fade></Link></li>
+     <h1 className="text-3xl font-bold mt-5"><Fade delay={1e3} cascade damping={1e-1}>Instructor Dashboard</Fade></h1>
+     <hr />
+       <li><Link to='/dashboard/addclass'> <Fade delay={1e3} cascade damping={1e-1}>Add a Class</Fade> </Link></li>
+       <li><Link to='/dashboard/instructorclass'> <Fade delay={1e3} cascade damping={1e-1}> My Classes</Fade></Link></li>
 
      </>)
 }
@@ -57,8 +60,10 @@ const role = datas[0]?.role
 {/* Admin */}
 {
      role && role==='admin' &&(<>
-       <li><Link to='/dashboard/manageclass'> <Fade>Manage Classes</Fade> </Link></li>
-       <li><Link to='/dashboard/manageusers'> <Fade>Manage Users</Fade> </Link></li>
+      <h1 className="text-3xl font-bold mt-5"><Fade delay={1e3} cascade damping={1e-1}>Instructor Dashboard</Fade></h1>
+     <hr />
+       <li><Link to='/dashboard/manageclass'> <Fade delay={1e3} cascade damping={1e-1}>Manage Classes</Fade> </Link></li>
+       <li><Link to='/dashboard/manageusers'> <Fade delay={1e3} cascade damping={1e-1}>Manage Users</Fade> </Link></li>
 
      </>)
 }

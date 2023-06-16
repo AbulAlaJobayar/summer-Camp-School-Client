@@ -7,7 +7,7 @@ const MyClass = () => {
 
   const { user } = useContext(AuthContext);
   useEffect(() => {
-    fetch(`http://localhost:5000/postdata/${user.email}`)
+    fetch(`https://assinment-12-server-ten.vercel.app/postdata/${user.email}`)
       .then((res) => res.json())
       .then((data) => setAllClass(data));
   }, [user.email]);
@@ -24,6 +24,7 @@ const MyClass = () => {
             <th>Feadback</th>
             <th>Seats</th>
             <th>Status</th>
+            <th>update</th>
           </tr>
         </thead>
         <tbody>

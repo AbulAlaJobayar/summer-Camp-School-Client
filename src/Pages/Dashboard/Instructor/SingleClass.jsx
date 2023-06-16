@@ -34,6 +34,9 @@ const {seat,status}=singleClass
         </td>
         <td>{seat}</td>
         <td><h1 className={status && status==="denied"?" capitalize font-bold  text-red-800   ":" capitalize font-bold    text-green-600  "} >{status}</h1></td>
+        <td>
+          <button className="btn btn-primary">update</button>
+        </td>
       </tr>
       {/* className="capitalize text-base font-semibold rounded py-2 px-4" */}
     </>

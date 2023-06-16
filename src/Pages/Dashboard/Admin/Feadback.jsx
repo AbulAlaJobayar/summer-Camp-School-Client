@@ -11,7 +11,7 @@ const Feadback = ({ closeModal, isOpen, id,setIsOpen }) => {
   const handleFeedback = (id) => {
     const updateStatus = { feadback: message};
 
-    fetch(`http://localhost:5000/feedback/${id}`, {
+    fetch(`https://assinment-12-server-ten.vercel.app/feedback/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
